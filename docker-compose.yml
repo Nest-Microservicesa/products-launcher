@@ -20,7 +20,10 @@ services:
 
   auth-ms:
     container_name: auth-ms
-    build: ./auth-ms
+    build:
+      context: ./auth-ms
+      args:
+        - AUTH_DATABASE_URL=${AUTH_DATABASE_URL}
     volumes:
       - ./auth-ms/src:/usr/src/app/src
     command: npm run start:dev
