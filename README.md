@@ -21,7 +21,7 @@ Repositorio principal que orquesta todo el ecosistema de microservicios construi
               ▼              ▼              ▼              ▼
         ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
         │products  │  │ orders   │  │ payments │  │  auth    │
-        │   -ms    │  │   -ms   │  │   -ms    │  │   -ms    │
+        │   -ms    │  │   -ms    │  │   -ms    │  │   -ms    │
         │(SQLite)  │  │(Postgres)│  │(Stripe)  │  │(Postgres)│
         └──────────┘  └──────────┘  └──────────┘  └──────────┘
 ```
@@ -66,11 +66,16 @@ STRIPE_SECRET=sk_test_xxxxxxxxxxxxxxxxxxxx
 STRIPE_SUCCESS_URL=http://localhost:3000/payments/success
 STRIPE_CANCEL_URL=http://localhost:3000/payments/cancel
 STRIPE_ENDPOINT_SECRET=whsec_xxxxxxxxxxxxxxxxxxxx
+JWT_SECRET=12345678901234567890123456789012
 ```
 
 ### 3. Levantar todos los servicios con Docker
 ```bash
+# Para desarrollo
 docker-compose up --build
+
+# Para producción
+docker compose -f docker-compose.prod.yml build
 ```
 
 ---
